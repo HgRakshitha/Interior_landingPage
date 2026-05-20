@@ -23,7 +23,7 @@ export default function OurProcess() {
   ];
 
   return (
-    <section className="section pt-0 pb-6 my-0" id="process">
+    <section className="section py-6 my-0" id="process">
       <div className="container px-6">
         
         {/* Top Label */}
@@ -53,91 +53,59 @@ export default function OurProcess() {
           {/* Right Text */}
           <div className="column is-6 is-flex is-align-items-flex-end" style={{ height: '100%' }}>
             <p className="is-size-6" style={{ color: '#D1D5DB', lineHeight: '1.7', fontFamily: 'Poppins, sans-serif', maxWidth: '450px' }}>
-              Eighteen detailed steps. We emphasize collaboration, precision, and creativity. From the first sketch to the final handover, we ensure you remain involved and informed.
+              Eighteen detailed steps. We emphasize collaboration, precision, and creativity. From the first sketch to the final handover, we ensure you remain involved and informed at every milestone.
             </p>
           </div>
         </div>
 
-        {/* Content Area: Sticky Video on Left, Scrollable Stages on Right */}
-        <div className="columns is-desktop mt-6">
-          {/* Left Column: Sticky Video */}
-          <div className="column is-5-desktop mb-6">
-            <div style={{ 
-              position: 'sticky', 
-              top: '100px',
-              zIndex: 10
-            }}>
-              <div style={{ position: 'relative', width: '100%' }}>
-                <video 
-                  src="/assets/videos/ai.mp4" 
-                  autoPlay 
-                  loop 
-                  muted 
-                  playsInline 
-                  style={{ 
-                    borderRadius: '16px', 
-                    width: '100%', 
-                    height: 'auto', 
-                    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    display: 'block'
-                  }} 
-                />
+        {/* Stages List (Standard 1-Column) */}
+        <div className="mt-6 pt-5">
+          {stages.map((stage, idx) => (
+            <div 
+              key={idx} 
+              className="columns is-vcentered py-5 is-mobile is-multiline" 
+              style={{ 
+                borderTop: '1px solid #374151', 
+                cursor: 'pointer', 
+                transition: 'background-color 0.3s ease, padding 0.3s ease',
+                margin: 0
+              }} 
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#111827';
+                e.currentTarget.style.paddingLeft = '1rem';
+                e.currentTarget.style.paddingRight = '1rem';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.paddingLeft = '0';
+                e.currentTarget.style.paddingRight = '0';
+              }}
+            >
+              {/* Number */}
+              <div className="column is-1-desktop is-2-mobile">
+                <span className="is-size-7 has-text-weight-semibold" style={{ color: '#A855F7', letterSpacing: '0.1em' }}>
+                  ({stage.num})
+                </span>
               </div>
-            </div>
-          </div>
+              
+              {/* Title */}
+              <div className="column is-4-desktop is-10-mobile">
+                <h3 className="is-size-4" style={{ fontFamily: 'Poppins, sans-serif', color: '#FFFFFF', fontWeight: 400 }}>
+                  {stage.title}
+                </h3>
+              </div>
+              
+              {/* Description */}
+              <div className="column is-7-desktop is-10-mobile is-offset-2-mobile">
+                <p className="is-size-6" style={{ color: '#D1D5DB', lineHeight: '1.6', fontFamily: 'Poppins, sans-serif' }}>
+                  {stage.desc}
+                </p>
+              </div>
 
-          {/* Right Column: Stages List */}
-          <div className="column is-7-desktop">
-            <div>
-              {stages.map((stage, idx) => (
-                <div 
-                  key={idx} 
-                  className="columns is-vcentered py-5 is-mobile is-multiline" 
-                  style={{ 
-                    borderTop: '1px solid #374151', 
-                    cursor: 'pointer', 
-                    transition: 'background-color 0.3s ease, padding 0.3s ease',
-                    margin: 0
-                  }} 
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#111827';
-                    e.currentTarget.style.paddingLeft = '1rem';
-                    e.currentTarget.style.paddingRight = '1rem';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = 'transparent';
-                    e.currentTarget.style.paddingLeft = '0';
-                    e.currentTarget.style.paddingRight = '0';
-                  }}
-                >
-                  {/* Number */}
-                  <div className="column is-1-desktop is-2-mobile">
-                    <span className="is-size-7 has-text-weight-semibold" style={{ color: '#A855F7', letterSpacing: '0.1em' }}>
-                      ({stage.num})
-                    </span>
-                  </div>
-                  
-                  {/* Title */}
-                  <div className="column is-4-desktop is-10-mobile">
-                    <h3 className="is-size-5" style={{ fontFamily: 'Poppins, sans-serif', color: '#FFFFFF', fontWeight: 500 }}>
-                      {stage.title}
-                    </h3>
-                  </div>
-                  
-                  {/* Description */}
-                  <div className="column is-7-desktop is-10-mobile is-offset-2-mobile">
-                    <p className="is-size-6" style={{ color: '#D1D5DB', lineHeight: '1.6', fontFamily: 'Poppins, sans-serif' }}>
-                      {stage.desc}
-                    </p>
-                  </div>
-
-                </div>
-              ))}
-              {/* Bottom border for the last item */}
-              <div style={{ borderTop: '1px solid #374151' }}></div>
             </div>
-          </div>
+          ))}
+          {/* Bottom border for the last item */}
+          <div style={{ borderTop: '1px solid #374151' }}></div>
         </div>
 
       </div>
