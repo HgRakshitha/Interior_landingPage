@@ -120,7 +120,7 @@ export default function OurProcess() {
           position: sticky;
           width: 100%;
           max-width: 1100px;
-          background-color: #111827;
+          background-color: #121214; /* Sleek, dark carbon/grey layout background */
           border: 1px solid rgba(255, 255, 255, 0.08);
           border-radius: 28px;
           padding: 3.5rem;
@@ -164,7 +164,7 @@ export default function OurProcess() {
         }
 
         .step-item:hover h4 {
-          color: #A38C6D !important; /* Gold/Bronze highlight */
+          color: #A855F7 !important; /* Restore purple highlight color */
         }
 
         .phase-photo {
@@ -216,7 +216,7 @@ export default function OurProcess() {
               margin: 0
             }}>
               A stacked roadmap <br />
-              <span className="serif-italic pr-2" style={{ color: '#A38C6D', fontStyle: 'italic' }}>from vision</span> to reality.
+              <span className="serif-italic pr-2" style={{ color: '#A855F7', fontStyle: 'italic' }}>from vision</span> to reality.
             </h2>
           </div>
           <div className="column is-6 is-flex is-align-items-flex-end">
@@ -241,7 +241,7 @@ export default function OurProcess() {
                   zIndex: idx + 1,
                   transform: `scale(${scale})`,
                   opacity: opacity,
-                  backgroundColor: progress > 0.5 ? '#0c0f17' : '#111827'
+                  backgroundColor: progress > 0.5 ? '#08080a' : '#121214' // Transition from carbon to deep charcoal/black
                 }}
               >
                 <div className="columns is-desktop is-multiline">
@@ -255,7 +255,7 @@ export default function OurProcess() {
                           style={{ 
                             fontSize: '3rem', 
                             fontWeight: '300', 
-                            color: '#A38C6D', /* Gold/Bronze accent */
+                            color: '#A855F7', /* Restore purple accent color */
                             marginRight: '1rem',
                             fontFamily: 'Poppins, sans-serif'
                           }}
@@ -265,7 +265,7 @@ export default function OurProcess() {
                         <div>
                           <span 
                             className="is-size-7 has-text-weight-bold" 
-                            style={{ color: '#A38C6D', letterSpacing: '0.1em' }}
+                            style={{ color: '#A855F7', letterSpacing: '0.1em' }}
                           >
                             PHASE 0{idx + 1}
                           </span>
@@ -317,7 +317,7 @@ export default function OurProcess() {
                             <span 
                               className="is-size-7 has-text-weight-semibold mr-3" 
                               style={{ 
-                                color: '#A38C6D', /* Gold/Bronze */
+                                color: '#A855F7', /* Restore purple accent color */
                                 fontFamily: 'Inter, sans-serif', 
                                 letterSpacing: '0.05em' 
                               }}
