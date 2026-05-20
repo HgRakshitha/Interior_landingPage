@@ -10,7 +10,7 @@ export default function Footer() {
           <h1 style={{ 
             fontSize: 'clamp(3.5rem, 12vw, 10rem)', 
             lineHeight: '0.85', 
-            fontFamily: 'Cormorant Garamond, serif', 
+            fontFamily: 'Poppins, sans-serif', 
             fontWeight: 300, 
             letterSpacing: '-0.02em', 
             color: '#FFFFFF' 
@@ -20,7 +20,7 @@ export default function Footer() {
           <h1 className="serif-italic" style={{ 
             fontSize: 'clamp(3.5rem, 12vw, 10rem)', 
             lineHeight: '0.85', 
-            fontFamily: 'Cormorant Garamond, serif', 
+            fontFamily: 'Poppins, sans-serif', 
             fontStyle: 'italic', 
             fontWeight: 300, 
             letterSpacing: '-0.02em', 

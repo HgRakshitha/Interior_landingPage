@@ -3,7 +3,7 @@ export default function Navbar() {
   return (
     <nav className="navbar is-transparent py-4 px-6" aria-label="main navigation">
       <div className="navbar-brand">
-        <a className="navbar-item title is-4 is-marginless" href="/" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+        <a className="navbar-item title is-4 is-marginless" href="/" style={{ fontFamily: 'Poppins, sans-serif' }}>
           UNICO
         </a>
       </div>

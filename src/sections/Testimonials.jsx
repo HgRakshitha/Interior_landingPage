@@ -43,22 +43,22 @@ export default function Testimonials() {
 
           <div className="columns is-multiline is-mobile is-vcentered has-text-centered mt-4">
             <div className="column is-3-desktop is-6-mobile py-4">
-              <span className="is-size-3" style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', color: '#FFFFFF' }}>
+              <span className="is-size-3" style={{ fontFamily: 'Poppins, sans-serif', fontStyle: 'italic', color: '#FFFFFF' }}>
                 Lumin & Co. <span className="ml-2" style={{ color: '#A855F7', fontSize: '0.8em', fontStyle: 'normal' }}>+</span>
               </span>
             </div>
             <div className="column is-3-desktop is-6-mobile py-4">
-              <span className="is-size-3" style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', color: '#FFFFFF' }}>
+              <span className="is-size-3" style={{ fontFamily: 'Poppins, sans-serif', fontStyle: 'italic', color: '#FFFFFF' }}>
                 North Atelier <span className="ml-2" style={{ color: '#A855F7', fontSize: '0.8em', fontStyle: 'normal' }}>+</span>
               </span>
             </div>
             <div className="column is-3-desktop is-6-mobile py-4">
-              <span className="is-size-3" style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', color: '#FFFFFF' }}>
+              <span className="is-size-3" style={{ fontFamily: 'Poppins, sans-serif', fontStyle: 'italic', color: '#FFFFFF' }}>
                 Studio Karak <span className="ml-2" style={{ color: '#A855F7', fontSize: '0.8em', fontStyle: 'normal' }}>+</span>
               </span>
             </div>
             <div className="column is-3-desktop is-6-mobile py-4">
-              <span className="is-size-3" style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', color: '#FFFFFF' }}>
+              <span className="is-size-3" style={{ fontFamily: 'Poppins, sans-serif', fontStyle: 'italic', color: '#FFFFFF' }}>
                 Vihaan Living <span className="ml-2" style={{ color: '#A855F7', fontSize: '0.8em', fontStyle: 'normal' }}>+</span>
               </span>
             </div>
@@ -88,7 +88,7 @@ export default function Testimonials() {
         <div className="columns my-6 py-4">
           <div className="column is-10-desktop is-offset-1-desktop">
             <p className="is-size-2 has-text-left" style={{ 
-              fontFamily: 'Cormorant Garamond, serif', 
+              fontFamily: 'Poppins, sans-serif', 
               fontStyle: 'italic', 
               color: '#FFFFFF',
               lineHeight: '1.4',
@@ -106,10 +106,10 @@ export default function Testimonials() {
           <div className="column is-8 is-flex is-align-items-center">
             <div style={{ width: '40px', height: '1px', backgroundColor: '#374151', marginRight: '1.5rem' }}></div>
             <div>
-              <div className="is-size-6 has-text-weight-semibold" style={{ color: '#FFFFFF', fontFamily: 'Inter, sans-serif' }}>
+              <div className="is-size-6 has-text-weight-semibold" style={{ color: '#FFFFFF', fontFamily: 'Poppins, sans-serif' }}>
                 {testimonials[activeIndex].author}
               </div>
-              <div className="is-size-7 is-uppercase" style={{ color: '#9CA3AF', letterSpacing: '0.05em', fontFamily: 'Inter, sans-serif', marginTop: '0.2rem' }}>
+              <div className="is-size-7 is-uppercase" style={{ color: '#9CA3AF', letterSpacing: '0.05em', fontFamily: 'Poppins, sans-serif', marginTop: '0.2rem' }}>
                 {testimonials[activeIndex].role}
               </div>
             </div>

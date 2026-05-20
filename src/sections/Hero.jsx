@@ -24,10 +24,10 @@ export default function Hero() {
               marginBottom: '2.5rem',
               color: '#FFFFFF'
             }}>
-              <span className="is-block" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+              <span className="is-block" style={{ fontFamily: 'Poppins, sans-serif' }}>
                 DESIGNING
               </span>
-              <span className="is-block" style={{ fontFamily: 'Cormorant Garamond, serif', whiteSpace: 'nowrap' }}>
+              <span className="is-block" style={{ fontFamily: 'Poppins, sans-serif', whiteSpace: 'nowrap' }}>
                 <span className="serif-italic pr-3" style={{ color: '#A855F7', fontStyle: 'italic' }}>QUIET</span>
                 INTERIORS.
               </span>
@@ -35,15 +35,14 @@ export default function Hero() {
 
             {/* Subheading / Paragraph */}
             <p className="subtitle is-size-5" style={{ 
-              maxWidth: '650px', 
+              maxWidth: '800px', 
               lineHeight: '1.6', 
               color: '#D1D5DB', 
               marginBottom: '3rem', 
-              fontFamily: 'Inter, sans-serif' 
+              fontFamily: 'Poppins, sans-serif' 
             }}>
               We are a small studio shaping homes, restaurants and workplaces<br />
-              with a slow, material-first approach &mdash; anchored in light, proportion<br />
-              and the way a place is actually used.
+              with a slow, material-first approach &mdash; anchored in light, proportion and the way a place is actually used.
             </p>
 
             {/* Call to Actions */}

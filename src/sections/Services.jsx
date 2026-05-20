@@ -28,7 +28,7 @@ export default function Services() {
               fontSize: 'clamp(3.5rem, 6vw, 5.5rem)', 
               lineHeight: '1.1', 
               fontWeight: 400, 
-              fontFamily: 'Cormorant Garamond, serif',
+              fontFamily: 'Poppins, sans-serif',
               color: '#FFFFFF',
               marginBottom: 0
             }}>
@@ -80,19 +80,19 @@ export default function Services() {
               </div>
               
               <div className="column is-5-desktop is-10-mobile">
-                <h3 style={{ fontFamily: 'Cormorant Garamond, serif', color: '#FFFFFF', fontWeight: 300, fontSize: '2.25rem', lineHeight: '1.2' }}>
+                <h3 style={{ fontFamily: 'Poppins, sans-serif', color: '#FFFFFF', fontWeight: 300, fontSize: '2.25rem', lineHeight: '1.2' }}>
                   {service.title}
                 </h3>
               </div>
               
               <div className="column is-5-desktop is-10-mobile is-offset-2-mobile">
-                <p className="is-size-6" style={{ color: '#D1D5DB', lineHeight: '1.6', fontFamily: 'Inter, sans-serif', maxWidth: '400px' }}>
+                <p className="is-size-6" style={{ color: '#D1D5DB', lineHeight: '1.6', fontFamily: 'Poppins, sans-serif', maxWidth: '400px' }}>
                   {service.desc}
                 </p>
               </div>
 
               <div className="column is-1-desktop is-2-mobile has-text-right is-flex is-align-items-center is-justify-content-flex-end">
-                <span className="plus-icon" style={{ fontSize: '1.75rem', fontWeight: 200, color: '#9CA3AF', transition: 'color 0.3s ease', lineHeight: 1, fontFamily: 'Cormorant Garamond, serif' }}>+</span>
+                <span className="plus-icon" style={{ fontSize: '1.75rem', fontWeight: 200, color: '#9CA3AF', transition: 'color 0.3s ease', lineHeight: 1, fontFamily: 'Poppins, sans-serif' }}>+</span>
               </div>
 
             </div>

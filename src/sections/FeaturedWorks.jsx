@@ -24,7 +24,7 @@ export default function FeaturedWorks() {
           onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
         />
       </figure>
-      <h3 className="is-size-3 mb-2" style={{ fontFamily: 'Cormorant Garamond, serif', color: '#FFFFFF', fontWeight: 400 }}>
+      <h3 className="is-size-3 mb-2" style={{ fontFamily: 'Poppins, sans-serif', color: '#FFFFFF', fontWeight: 400 }}>
         {work.title}
       </h3>
       <div className="is-flex is-justify-content-space-between is-align-items-center" style={{ borderTop: '1px solid #374151', paddingTop: '1rem' }}>
@@ -56,7 +56,7 @@ export default function FeaturedWorks() {
               fontSize: '2.5rem', 
               lineHeight: '1.2', 
               fontWeight: 400, 
-              fontFamily: 'Cormorant Garamond, serif',
+              fontFamily: 'Poppins, sans-serif',
               color: '#FFFFFF',
               marginBottom: 0
             }}>

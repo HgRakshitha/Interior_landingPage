@@ -32,7 +32,7 @@ export default function OurStudio() {
               fontSize: 'clamp(3rem, 5vw, 4.5rem)', 
               lineHeight: '1.1', 
               fontWeight: 400, 
-              fontFamily: 'Cormorant Garamond, serif',
+              fontFamily: 'Poppins, sans-serif',
               marginBottom: '4rem',
               color: '#FFFFFF'
             }}>
@@ -44,12 +44,12 @@ export default function OurStudio() {
             {/* Paragraphs Split */}
             <div className="columns is-variable is-6 mb-6">
               <div className="column is-6">
-                <p className="is-size-6" style={{ color: '#D1D5DB', lineHeight: '1.7', fontFamily: 'Inter, sans-serif' }}>
+                <p className="is-size-6" style={{ color: '#D1D5DB', lineHeight: '1.7', fontFamily: 'Poppins, sans-serif' }}>
                   Unico Interiors is the interior arm of Unico International &mdash; a practice working at the intersection of architecture, craft and everyday ritual. We design from first principles: light, plan, material, detail.
                 </p>
               </div>
               <div className="column is-6">
-                <p className="is-size-6" style={{ color: '#D1D5DB', lineHeight: '1.7', fontFamily: 'Inter, sans-serif' }}>
+                <p className="is-size-6" style={{ color: '#D1D5DB', lineHeight: '1.7', fontFamily: 'Poppins, sans-serif' }}>
                   We keep our roster small so that every project carries the same attention &mdash; from the brief and the first concept sketch to the final coat of paint and the handover photograph.
                 </p>
               </div>
@@ -58,15 +58,15 @@ export default function OurStudio() {
             {/* Stats Row */}
             <div className="columns is-mobile is-multiline" style={{ borderTop: '1px solid #374151', paddingTop: '2.5rem' }}>
               <div className="column is-4-desktop is-6-mobile">
-                <div className="is-size-1 mb-2" style={{ fontFamily: 'Cormorant Garamond, serif', color: '#FFFFFF', lineHeight: '1' }}>12+</div>
+                <div className="is-size-1 mb-2" style={{ fontFamily: 'Poppins, sans-serif', color: '#FFFFFF', lineHeight: '1' }}>12+</div>
                 <div className="is-uppercase is-size-7 has-text-weight-bold" style={{ letterSpacing: '0.1em', color: '#9CA3AF' }}>YEARS IN PRACTICE</div>
               </div>
               <div className="column is-4-desktop is-6-mobile">
-                <div className="is-size-1 mb-2" style={{ fontFamily: 'Cormorant Garamond, serif', color: '#FFFFFF', lineHeight: '1' }}>90+</div>
+                <div className="is-size-1 mb-2" style={{ fontFamily: 'Poppins, sans-serif', color: '#FFFFFF', lineHeight: '1' }}>90+</div>
                 <div className="is-uppercase is-size-7 has-text-weight-bold" style={{ letterSpacing: '0.1em', color: '#9CA3AF' }}>SPACES DELIVERED</div>
               </div>
               <div className="column is-4-desktop is-12-mobile mt-4-mobile">
-                <div className="is-size-1 mb-2" style={{ fontFamily: 'Cormorant Garamond, serif', color: '#FFFFFF', lineHeight: '1' }}>18</div>
+                <div className="is-size-1 mb-2" style={{ fontFamily: 'Poppins, sans-serif', color: '#FFFFFF', lineHeight: '1' }}>18</div>
                 <div className="is-uppercase is-size-7 has-text-weight-bold" style={{ letterSpacing: '0.1em', color: '#9CA3AF' }}>CITIES & COUNTING</div>
               </div>
             </div>

@@ -31,7 +31,7 @@ export default function OurProcess() {
               fontSize: 'clamp(2.5rem, 4.5vw, 4rem)', 
               lineHeight: '1.1', 
               fontWeight: 400, 
-              fontFamily: 'Cormorant Garamond, serif',
+              fontFamily: 'Poppins, sans-serif',
               color: '#FFFFFF',
               margin: 0
             }}>
@@ -42,7 +42,7 @@ export default function OurProcess() {
           </div>
           {/* Right Text */}
           <div className="column is-6 is-flex is-align-items-flex-end" style={{ height: '100%' }}>
-            <p className="is-size-6" style={{ color: '#D1D5DB', lineHeight: '1.7', fontFamily: 'Inter, sans-serif', maxWidth: '450px' }}>
+            <p className="is-size-6" style={{ color: '#D1D5DB', lineHeight: '1.7', fontFamily: 'Poppins, sans-serif', maxWidth: '450px' }}>
               Eight stages. Every milestone is documented, costed and reviewed with you before we move on. No surprises, no design left to chance &mdash; only quiet, considered progress.
             </p>
           </div>
@@ -80,14 +80,14 @@ export default function OurProcess() {
               
               {/* Title */}
               <div className="column is-4-desktop is-10-mobile">
-                <h3 className="is-size-3" style={{ fontFamily: 'Cormorant Garamond, serif', color: '#FFFFFF', fontWeight: 400 }}>
+                <h3 className="is-size-3" style={{ fontFamily: 'Poppins, sans-serif', color: '#FFFFFF', fontWeight: 400 }}>
                   {stage.title}
                 </h3>
               </div>
               
               {/* Description */}
               <div className="column is-7-desktop is-10-mobile is-offset-2-mobile">
-                <p className="is-size-6" style={{ color: '#D1D5DB', lineHeight: '1.6', fontFamily: 'Inter, sans-serif' }}>
+                <p className="is-size-6" style={{ color: '#D1D5DB', lineHeight: '1.6', fontFamily: 'Poppins, sans-serif' }}>
                   {stage.desc}
                 </p>
               </div>

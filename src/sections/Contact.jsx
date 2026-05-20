@@ -15,7 +15,7 @@ export default function Contact() {
     outline: 'none',
     marginBottom: '2.5rem',
     transition: 'border-color 0.3s ease',
-    fontFamily: 'Inter, sans-serif'
+    fontFamily: 'Poppins, sans-serif'
   });
 
   const labelStyle = {
@@ -47,7 +47,7 @@ export default function Contact() {
                 fontSize: '2.5rem', 
                 lineHeight: '1.2', 
                 fontWeight: 400, 
-                fontFamily: 'Cormorant Garamond, serif',
+                fontFamily: 'Poppins, sans-serif',
                 color: '#FFFFFF'
               }}>
                 Tell us about <br />
@@ -61,7 +61,7 @@ export default function Contact() {
               {/* Studio Block */}
               <div className="mb-5">
                 <span style={labelStyle}>STUDIO</span>
-                <p className="mt-2 is-size-6" style={{ color: '#D1D5DB', lineHeight: '1.6', fontFamily: 'Inter, sans-serif' }}>
+                <p className="mt-2 is-size-6" style={{ color: '#D1D5DB', lineHeight: '1.6', fontFamily: 'Poppins, sans-serif' }}>
                   Unico Interiors &mdash; a division of Unico International <br />
                   Bengaluru &middot; Kochi &middot; Doha
                 </p>
@@ -73,7 +73,7 @@ export default function Contact() {
                 <p className="mt-2 is-size-6">
                   <a 
                     href="mailto:interiors@unico-international.com" 
-                    style={{ color: '#FFFFFF', textDecoration: 'none', fontFamily: 'Inter, sans-serif', transition: 'color 0.3s ease' }}
+                    style={{ color: '#FFFFFF', textDecoration: 'none', fontFamily: 'Poppins, sans-serif', transition: 'color 0.3s ease' }}
                     onMouseEnter={(e) => e.currentTarget.style.color = '#A855F7'}
                     onMouseLeave={(e) => e.currentTarget.style.color = '#FFFFFF'}
                   >
@@ -85,7 +85,7 @@ export default function Contact() {
               {/* Call Block */}
               <div>
                 <span style={labelStyle}>CALL</span>
-                <p className="mt-2 is-size-6" style={{ color: '#D1D5DB', fontFamily: 'Inter, sans-serif' }}>
+                <p className="mt-2 is-size-6" style={{ color: '#D1D5DB', fontFamily: 'Poppins, sans-serif' }}>
                   +91 90000 00000
                 </p>
               </div>
