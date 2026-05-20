@@ -113,7 +113,7 @@ export default function OurProcess() {
           display: flex;
           flex-direction: column;
           align-items: center;
-          margin-top: 35vh; /* Generous spacing to let header scroll out of view before cards stick */
+          margin-top: 70vh; /* Cinematic spacing to ensure header is fully off-screen before cards stick */
         }
 
         @media screen and (max-width: 768px) {
