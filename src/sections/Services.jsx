@@ -11,7 +11,7 @@ export default function Services() {
   ];
 
   return (
-    <section className="section is-medium pt-6 mt-6" id="services">
+    <section className="section py-5 my-0" id="services">
       <div className="container px-6">
         
         {/* Top Label */}

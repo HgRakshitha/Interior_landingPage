@@ -39,7 +39,7 @@ export default function FeaturedWorks() {
   );
 
   return (
-    <section className="section is-medium pt-6 mt-6" id="works">
+    <section className="section py-5 my-0" id="works">
       <div className="container px-6">
         
         {/* Top Label */}

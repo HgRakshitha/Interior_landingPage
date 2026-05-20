@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function OurStudio() { 
   return (
-    <section className="section is-medium pt-6 mt-6" id="studio">
+    <section className="section py-5 my-0" id="studio">
       <div className="container px-6">
         {/* Top Label */}
         <div className="mb-6">

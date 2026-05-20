@@ -28,7 +28,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="section is-medium pt-6 mt-6" id="contact" style={{ backgroundColor: '#000000' }}>
+    <section className="section py-5 my-0" id="contact" style={{ backgroundColor: '#000000' }}>
       <div className="container px-6">
         <div className="columns is-variable is-8 is-desktop">
           

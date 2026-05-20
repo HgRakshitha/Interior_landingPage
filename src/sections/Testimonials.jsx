@@ -22,7 +22,7 @@ export default function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(2); // Start on 3rd testimonial to match image (3 / 3)
 
   return (
-    <section className="section is-medium pt-0" id="testimonials">
+    <section className="section py-5 my-0" id="testimonials">
       
       {/* Part 1: Trusted By Banner */}
       <div className="container px-6 mb-6">

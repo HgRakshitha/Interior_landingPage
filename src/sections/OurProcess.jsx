@@ -13,7 +13,7 @@ export default function OurProcess() {
   ];
 
   return (
-    <section className="section is-medium pt-6 mt-6" id="process">
+    <section className="section py-5 my-0" id="process">
       <div className="container px-6">
         
         {/* Top Label */}
