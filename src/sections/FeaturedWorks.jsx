@@ -39,7 +39,7 @@ export default function FeaturedWorks() {
   );
 
   return (
-    <section className="section py-5 my-0" id="works">
+    <section className="section pt-5 pb-0 my-0" id="works">
       <div className="container px-6">
         
         {/* Top Label */}
@@ -91,7 +91,7 @@ export default function FeaturedWorks() {
         </div>
 
         {/* Centered Button */}
-        <div className="has-text-centered mt-6 pt-5">
+        <div className="has-text-centered mt-4 pt-0">
           <button className="button is-rounded is-white is-outlined px-6" style={{ 
             height: '50px', 
             letterSpacing: '0.1em',
