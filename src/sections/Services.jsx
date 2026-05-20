@@ -1,5 +1,4 @@
 import React from 'react';
-import { FiPlus } from 'react-icons/fi';
 
 export default function Services() { 
   const services = [
