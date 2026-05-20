@@ -5,6 +5,7 @@ import OurStudio from './sections/OurStudio';
 import Services from './sections/Services';
 import FeaturedWorks from './sections/FeaturedWorks';
 import OurProcess from './sections/OurProcess';
+import PortfolioShowcase from './sections/PortfolioShowcase';
 import Testimonials from './sections/Testimonials';
 import Contact from './sections/Contact';
 
@@ -17,6 +18,7 @@ function App() {
         <Services />
         <FeaturedWorks />
         <OurProcess />
+        <PortfolioShowcase />
         <Testimonials />
         <Contact />
       </main>
