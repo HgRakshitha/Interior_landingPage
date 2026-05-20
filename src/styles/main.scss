@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap');
+
+$primary: #A855F7;                 
+$dark: #000000;                    
+$light: #FFFFFF;
+$body-background-color: $dark;   
+$body-color: $light;
+
+$family-serif: 'Cormorant Garamond', serif;
+$family-sans-serif: 'Inter', sans-serif;
+
+$family-primary: $family-sans-serif;
+$family-secondary: $family-serif;
+
+$title-family: $family-serif;
+$title-color: $light;
+$subtitle-color: #D1D5DB;
+
+@import "bulma/bulma.scss";

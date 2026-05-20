@@ -1,0 +1,30 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+.unico-gradient-btn {
+  background: linear-gradient(to right, #2563eb, #9333ea) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  transition: all 0.3s ease;
+}
+
+.unico-gradient-btn:hover {
+  background: linear-gradient(to right, #3b82f6, #a855f7) !important;
+}
+
+.unico-gradient-text {
+  background: linear-gradient(to right, #2563eb, #9333ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.serif-italic {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: #A38C6D;
+}
