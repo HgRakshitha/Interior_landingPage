@@ -120,29 +120,46 @@ export default function OurProcess() {
           position: sticky;
           width: 100%;
           max-width: 1100px;
-          background-color: #121214; /* Sleek, dark carbon/grey layout background */
+          background-color: #121214;
           border: 1px solid rgba(255, 255, 255, 0.08);
           border-radius: 28px;
           padding: 3.5rem;
           box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.6);
-          transition: transform 0.1s linear, opacity 0.2s ease, background-color 0.3s ease;
+          /* Ultra smooth cubic-bezier transition for scroll and scale effects */
+          transition: 
+            transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+            opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+            background-color 0.5s ease,
+            box-shadow 0.4s ease;
           display: flex;
           flex-direction: column;
           margin-bottom: 20rem; 
+          transform-origin: center center;
+        }
+
+        .stacking-card:hover {
+          box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(168, 85, 247, 0.06);
         }
 
         .stacking-card:last-child {
           margin-bottom: 0 !important;
         }
 
+        /* Center card perfectly from 4 sides (vertically centered using translateY(-50%) on top: 50vh) */
         @media screen and (min-width: 769px) {
-          .stacking-card.card-0 { top: calc(50vh - 240px); }
-          .stacking-card.card-1 { top: calc(50vh - 240px + 25px); }
-          .stacking-card.card-2 { top: calc(50vh - 240px + 50px); }
-          .stacking-card.card-3 { top: calc(50vh - 240px + 75px); }
+          .stacking-card.card-0 { top: calc(50vh - 45px); }
+          .stacking-card.card-1 { top: calc(50vh - 15px); }
+          .stacking-card.card-2 { top: calc(50vh + 15px); }
+          .stacking-card.card-3 { top: calc(50vh + 45px); }
         }
 
+        /* Safe fallbacks for mobile layouts */
         @media screen and (max-width: 768px) {
+          .stacking-card {
+            padding: 2rem;
+            border-radius: 20px;
+            margin-bottom: 12rem;
+          }
           .stacking-card.card-0 { top: 90px; }
           .stacking-card.card-1 { top: 110px; }
           .stacking-card.card-2 { top: 130px; }
@@ -164,7 +181,7 @@ export default function OurProcess() {
         }
 
         .step-item:hover h4 {
-          color: #A855F7 !important; /* Restore purple highlight color */
+          color: #A855F7 !important;
         }
 
         .phase-photo {
@@ -174,7 +191,7 @@ export default function OurProcess() {
           border-radius: 16px;
           border: 1px solid rgba(255, 255, 255, 0.05);
           opacity: 0.8;
-          transition: transform 0.5s ease, opacity 0.5s ease;
+          transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
         }
 
         .stacking-card:hover .phase-photo {
@@ -183,11 +200,6 @@ export default function OurProcess() {
         }
 
         @media screen and (max-width: 768px) {
-          .stacking-card {
-            padding: 2rem;
-            border-radius: 20px;
-            margin-bottom: 12rem;
-          }
           .phase-photo {
             height: 180px;
             margin-top: 1.5rem;
@@ -233,15 +245,21 @@ export default function OurProcess() {
             const scale = 1 - progress * 0.04;
             const opacity = 1 - progress * 0.4;
 
+            // Compute active transform: translateY(-50%) for perfect vertical centering, combined with scaling
+            // On mobile viewports we remove translateY(-50%) to fit the normal linear page flow
+            const transformValue = window.innerWidth > 768 
+              ? `translateY(-50%) scale(${scale})` 
+              : `scale(${scale})`;
+
             return (
               <div 
                 key={idx}
                 className={`stacking-card card-${idx}`}
                 style={{
                   zIndex: idx + 1,
-                  transform: `scale(${scale})`,
+                  transform: transformValue,
                   opacity: opacity,
-                  backgroundColor: progress > 0.5 ? '#08080a' : '#121214' // Transition from carbon to deep charcoal/black
+                  backgroundColor: progress > 0.5 ? '#08080a' : '#121214'
                 }}
               >
                 <div className="columns is-desktop is-multiline">
@@ -255,7 +273,7 @@ export default function OurProcess() {
                           style={{ 
                             fontSize: '3rem', 
                             fontWeight: '300', 
-                            color: '#A855F7', /* Restore purple accent color */
+                            color: '#A855F7',
                             marginRight: '1rem',
                             fontFamily: 'Poppins, sans-serif'
                           }}
@@ -317,7 +335,7 @@ export default function OurProcess() {
                             <span 
                               className="is-size-7 has-text-weight-semibold mr-3" 
                               style={{ 
-                                color: '#A855F7', /* Restore purple accent color */
+                                color: '#A855F7',
                                 fontFamily: 'Inter, sans-serif', 
                                 letterSpacing: '0.05em' 
                               }}
