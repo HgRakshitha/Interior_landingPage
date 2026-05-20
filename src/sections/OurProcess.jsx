@@ -105,7 +105,7 @@ export default function OurProcess() {
       style={{ 
         backgroundColor: '#000000', 
         position: 'relative',
-        paddingBottom: '10rem'
+        paddingBottom: '0rem' /* Removed large padding-bottom */
       }}
     >
       <style>{`
@@ -113,12 +113,14 @@ export default function OurProcess() {
           display: flex;
           flex-direction: column;
           align-items: center;
-          margin-top: 70vh; /* Cinematic spacing to ensure header is fully off-screen before cards stick */
+          margin-top: 70vh;
+          margin-bottom: -150px; /* Pull the next section up to offset translateY shift */
         }
 
         @media screen and (max-width: 768px) {
           .stacking-cards-wrapper {
             margin-top: 4rem;
+            margin-bottom: 0 !important;
           }
         }
 
