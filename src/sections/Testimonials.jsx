@@ -43,22 +43,22 @@ export default function Testimonials() {
 
           <div className="columns is-multiline is-mobile is-vcentered has-text-centered mt-4">
             <div className="column is-3-desktop is-6-mobile py-4">
-              <span className="is-size-3" style={{ fontFamily: 'Poppins, sans-serif', fontStyle: 'italic', color: '#FFFFFF' }}>
+              <span className="is-size-4-desktop is-size-5-touch" style={{ fontFamily: 'Poppins, sans-serif', fontStyle: 'italic', color: '#FFFFFF' }}>
                 Lumin & Co. <span className="ml-2" style={{ color: '#A855F7', fontSize: '0.8em', fontStyle: 'normal' }}>+</span>
               </span>
             </div>
             <div className="column is-3-desktop is-6-mobile py-4">
-              <span className="is-size-3" style={{ fontFamily: 'Poppins, sans-serif', fontStyle: 'italic', color: '#FFFFFF' }}>
+              <span className="is-size-4-desktop is-size-5-touch" style={{ fontFamily: 'Poppins, sans-serif', fontStyle: 'italic', color: '#FFFFFF' }}>
                 North Atelier <span className="ml-2" style={{ color: '#A855F7', fontSize: '0.8em', fontStyle: 'normal' }}>+</span>
               </span>
             </div>
             <div className="column is-3-desktop is-6-mobile py-4">
-              <span className="is-size-3" style={{ fontFamily: 'Poppins, sans-serif', fontStyle: 'italic', color: '#FFFFFF' }}>
+              <span className="is-size-4-desktop is-size-5-touch" style={{ fontFamily: 'Poppins, sans-serif', fontStyle: 'italic', color: '#FFFFFF' }}>
                 Studio Karak <span className="ml-2" style={{ color: '#A855F7', fontSize: '0.8em', fontStyle: 'normal' }}>+</span>
               </span>
             </div>
             <div className="column is-3-desktop is-6-mobile py-4">
-              <span className="is-size-3" style={{ fontFamily: 'Poppins, sans-serif', fontStyle: 'italic', color: '#FFFFFF' }}>
+              <span className="is-size-4-desktop is-size-5-touch" style={{ fontFamily: 'Poppins, sans-serif', fontStyle: 'italic', color: '#FFFFFF' }}>
                 Vihaan Living <span className="ml-2" style={{ color: '#A855F7', fontSize: '0.8em', fontStyle: 'normal' }}>+</span>
               </span>
             </div>
