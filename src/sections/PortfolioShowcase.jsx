@@ -180,7 +180,7 @@ export default function PortfolioShowcase() {
             font-size: 1.15rem;
             letter-spacing: 0.25em;
             font-weight: 500;
-            color: rgba(255, 255, 255, 0.7);
+            color: #FFFFFF;
             pointer-events: none;
             transition: opacity 0.4s ease;
             font-family: 'Poppins', sans-serif;
