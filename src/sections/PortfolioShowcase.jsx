@@ -177,12 +177,13 @@ export default function PortfolioShowcase() {
             transform: translate(-50%, -50%) rotate(-90deg);
             white-space: nowrap;
             text-transform: uppercase;
-            font-size: 1.15rem;
+            font-size: 1.25rem;
             letter-spacing: 0.25em;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.7);
+            font-weight: 600;
+            color: #FFFFFF;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.95), 0 2px 4px rgba(0, 0, 0, 0.8);
             pointer-events: none;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.4s ease, color 0.3s ease;
             font-family: 'Poppins', sans-serif;
           }
 
@@ -190,8 +191,13 @@ export default function PortfolioShowcase() {
             opacity: 0;
           }
 
+          .showcase-card:not(.active):hover .collapsed-title {
+            color: #A855F7;
+          }
+
           .showcase-card:not(.active) .card-overlay {
-            background: rgba(0, 0, 0, 0.45);
+            background: rgba(0, 0, 0, 0.65);
+            transition: background 0.5s ease;
           }
 
           .showcase-card:not(.active) .card-content {
