@@ -67,7 +67,6 @@ export default function OurProcess() {
       const cards = containerRef.current.querySelectorAll('.stacking-card');
       
       const progressList = Array.from(cards).map((card, idx) => {
-        // The last card is never overlapped by a next card, so it never scales down or fades
         if (idx === cards.length - 1) return 0;
 
         const nextCard = cards[idx + 1];
@@ -76,13 +75,11 @@ export default function OurProcess() {
         const cardRect = card.getBoundingClientRect();
         const nextRect = nextCard.getBoundingClientRect();
 
-        // Calculate overlap progress based on the position of the next card relative to the current card's top
         // Overlap starts when the next card is 250px away from stacking, and reaches 100% when it is fully stacked
         const startOverlap = cardRect.top + 250;
         const endOverlap = cardRect.top + 25;
         const totalDistance = startOverlap - endOverlap;
 
-        // Current distance of next card to the trigger point
         const currentDistance = startOverlap - nextRect.top;
         const progress = Math.max(0, Math.min(1, currentDistance / totalDistance));
         return progress;
@@ -92,10 +89,13 @@ export default function OurProcess() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    // Trigger once on mount
+    window.addEventListener('resize', handleScroll);
     handleScroll();
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, []);
 
   return (
@@ -106,7 +106,7 @@ export default function OurProcess() {
       style={{ 
         backgroundColor: '#000000', 
         position: 'relative',
-        paddingBottom: '10rem' /* Generous bottom padding to allow a smooth, perfect finish before next section */
+        paddingBottom: '10rem'
       }}
     >
       <style>{`
@@ -121,7 +121,7 @@ export default function OurProcess() {
           position: sticky;
           width: 100%;
           max-width: 1100px;
-          background-color: #111827; /* Rich Zinc/Grey background for contrast */
+          background-color: #111827;
           border: 1px solid rgba(255, 255, 255, 0.08);
           border-radius: 28px;
           padding: 3.5rem;
@@ -129,12 +129,27 @@ export default function OurProcess() {
           transition: transform 0.1s linear, opacity 0.2s ease, background-color 0.3s ease;
           display: flex;
           flex-direction: column;
-          /* Space between cards during scroll */
           margin-bottom: 20rem; 
         }
 
         .stacking-card:last-child {
-          margin-bottom: 0 !important; /* Last card doesn't push down, enabling a perfect exit transition */
+          margin-bottom: 0 !important;
+        }
+
+        /* Responsive vertical centering of sticky cards in viewport */
+        @media screen and (min-width: 769px) {
+          .stacking-card.card-0 { top: calc(50vh - 240px); }
+          .stacking-card.card-1 { top: calc(50vh - 240px + 25px); }
+          .stacking-card.card-2 { top: calc(50vh - 240px + 50px); }
+          .stacking-card.card-3 { top: calc(50vh - 240px + 75px); }
+        }
+
+        /* Safe top offsets on mobile devices */
+        @media screen and (max-width: 768px) {
+          .stacking-card.card-0 { top: 90px; }
+          .stacking-card.card-1 { top: 110px; }
+          .stacking-card.card-2 { top: 130px; }
+          .stacking-card.card-3 { top: 150px; }
         }
 
         .step-item {
@@ -217,27 +232,19 @@ export default function OurProcess() {
         {/* Stacked Cards Wrapper */}
         <div className="stacking-cards-wrapper">
           {phases.map((phase, idx) => {
-            // Apply scale-down and opacity-fade to cards underneath
             const progress = scrollProgress[idx] || 0;
-            
-            // The card scales down and dims as the next cards stack above it
-            const scale = 1 - progress * 0.04; // Gentle scaling down (max 4% smaller)
-            const opacity = 1 - progress * 0.4;  // Gentle fade down (max 40% faded, leaving card 60% visible)
-            
-            // Offset the sticky positions slightly so the tops of all cards remain visible when fully stacked
-            // Card 1 sticks at 120px, Card 2 at 145px, Card 3 at 170px, Card 4 at 195px
-            const stickyTop = 120 + idx * 25;
+            const scale = 1 - progress * 0.04;
+            const opacity = 1 - progress * 0.4;
 
             return (
               <div 
                 key={idx}
-                className="stacking-card"
+                className={`stacking-card card-${idx}`}
                 style={{
-                  top: `${stickyTop}px`,
                   zIndex: idx + 1,
                   transform: `scale(${scale})`,
                   opacity: opacity,
-                  backgroundColor: progress > 0.5 ? '#0c0f17' : '#111827' // Darken card background slightly as it gets stacked underneath
+                  backgroundColor: progress > 0.5 ? '#0c0f17' : '#111827'
                 }}
               >
                 <div className="columns is-desktop is-multiline">
