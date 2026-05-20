@@ -109,15 +109,22 @@ export default function OurProcess() {
       }}
     >
       <style>{`
+        #process {
+          margin-bottom: -340px !important; /* Pull up next section directly to remove gap completely */
+        }
+
         .stacking-cards-wrapper {
           display: flex;
           flex-direction: column;
           align-items: center;
           margin-top: 70vh;
-          margin-bottom: -240px; /* Fully offset translateY shift to remove bottom gap */
+          margin-bottom: 0 !important;
         }
 
         @media screen and (max-width: 768px) {
+          #process {
+            margin-bottom: 0 !important;
+          }
           .stacking-cards-wrapper {
             margin-top: 4rem;
             margin-bottom: 0 !important;
