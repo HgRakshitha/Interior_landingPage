@@ -113,7 +113,13 @@ export default function OurProcess() {
           display: flex;
           flex-direction: column;
           align-items: center;
-          margin-top: 4rem;
+          margin-top: 35vh; /* Generous spacing to let header scroll out of view before cards stick */
+        }
+
+        @media screen and (max-width: 768px) {
+          .stacking-cards-wrapper {
+            margin-top: 4rem;
+          }
         }
 
         .stacking-card {
