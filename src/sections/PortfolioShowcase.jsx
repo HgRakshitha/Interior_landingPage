@@ -42,7 +42,7 @@ export default function PortfolioShowcase() {
   ];
 
   return (
-    <section className="section pb-6 pt-2 my-0" id="showcase" style={{ backgroundColor: '#000000', paddingTop: '2rem' }}>
+    <section className="section pb-6 pt-0 my-0" id="showcase" style={{ backgroundColor: '#000000', paddingTop: '0rem' }}>
       <div className="container px-6">
         
         {/* Top Label */}

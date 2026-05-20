@@ -114,7 +114,7 @@ export default function OurProcess() {
           flex-direction: column;
           align-items: center;
           margin-top: 70vh;
-          margin-bottom: -150px; /* Pull the next section up to offset translateY shift */
+          margin-bottom: -240px; /* Fully offset translateY shift to remove bottom gap */
         }
 
         @media screen and (max-width: 768px) {
