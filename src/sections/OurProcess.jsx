@@ -75,7 +75,6 @@ export default function OurProcess() {
         const cardRect = card.getBoundingClientRect();
         const nextRect = nextCard.getBoundingClientRect();
 
-        // Overlap starts when the next card is 250px away from stacking, and reaches 100% when it is fully stacked
         const startOverlap = cardRect.top + 250;
         const endOverlap = cardRect.top + 25;
         const totalDistance = startOverlap - endOverlap;
@@ -136,7 +135,6 @@ export default function OurProcess() {
           margin-bottom: 0 !important;
         }
 
-        /* Responsive vertical centering of sticky cards in viewport */
         @media screen and (min-width: 769px) {
           .stacking-card.card-0 { top: calc(50vh - 240px); }
           .stacking-card.card-1 { top: calc(50vh - 240px + 25px); }
@@ -144,7 +142,6 @@ export default function OurProcess() {
           .stacking-card.card-3 { top: calc(50vh - 240px + 75px); }
         }
 
-        /* Safe top offsets on mobile devices */
         @media screen and (max-width: 768px) {
           .stacking-card.card-0 { top: 90px; }
           .stacking-card.card-1 { top: 110px; }
@@ -167,21 +164,21 @@ export default function OurProcess() {
         }
 
         .step-item:hover h4 {
-          color: #A855F7 !important;
+          color: #A38C6D !important; /* Gold/Bronze highlight */
         }
 
-        .phase-illustration {
+        .phase-photo {
           width: 100%;
-          max-width: 320px;
-          border-radius: 12px;
-          opacity: 0.85;
-          mix-blend-mode: screen;
-          filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.1));
+          height: 240px;
+          object-fit: cover;
+          border-radius: 16px;
+          border: 1px solid rgba(255, 255, 255, 0.05);
+          opacity: 0.8;
           transition: transform 0.5s ease, opacity 0.5s ease;
         }
 
-        .stacking-card:hover .phase-illustration {
-          transform: scale(1.03);
+        .stacking-card:hover .phase-photo {
+          transform: scale(1.02);
           opacity: 1;
         }
 
@@ -191,8 +188,8 @@ export default function OurProcess() {
             border-radius: 20px;
             margin-bottom: 12rem;
           }
-          .phase-illustration {
-            max-width: 200px;
+          .phase-photo {
+            height: 180px;
             margin-top: 1.5rem;
           }
         }
@@ -219,7 +216,7 @@ export default function OurProcess() {
               margin: 0
             }}>
               A stacked roadmap <br />
-              <span className="serif-italic pr-2" style={{ color: '#A855F7', fontStyle: 'italic' }}>from vision</span> to reality.
+              <span className="serif-italic pr-2" style={{ color: '#A38C6D', fontStyle: 'italic' }}>from vision</span> to reality.
             </h2>
           </div>
           <div className="column is-6 is-flex is-align-items-flex-end">
@@ -249,7 +246,7 @@ export default function OurProcess() {
               >
                 <div className="columns is-desktop is-multiline">
                   
-                  {/* Left Column: Phase Info & Illustration */}
+                  {/* Left Column: Phase Info & Real Photo */}
                   <div className="column is-5-desktop is-12-touch is-flex is-flex-direction-column is-justify-content-between">
                     <div>
                       {/* Big Number and Phase Name */}
@@ -258,7 +255,7 @@ export default function OurProcess() {
                           style={{ 
                             fontSize: '3rem', 
                             fontWeight: '300', 
-                            color: '#A855F7', 
+                            color: '#A38C6D', /* Gold/Bronze accent */
                             marginRight: '1rem',
                             fontFamily: 'Poppins, sans-serif'
                           }}
@@ -268,7 +265,7 @@ export default function OurProcess() {
                         <div>
                           <span 
                             className="is-size-7 has-text-weight-bold" 
-                            style={{ color: '#A855F7', letterSpacing: '0.1em' }}
+                            style={{ color: '#A38C6D', letterSpacing: '0.1em' }}
                           >
                             PHASE 0{idx + 1}
                           </span>
@@ -301,15 +298,12 @@ export default function OurProcess() {
                       </p>
                     </div>
 
-                    {/* Illustration image (from public/assets/images/) */}
+                    {/* High-fidelity architectural photo representing actual studio work */}
                     <div className="mt-5 is-hidden-mobile">
                       <img 
                         src={phase.image} 
-                        alt={`${phase.name} concept sketch`} 
-                        className="phase-illustration"
-                        onError={(e) => {
-                          e.target.style.display = 'none'; // Fallback if image isn't loaded
-                        }}
+                        alt={`${phase.name} workspace`} 
+                        className="phase-photo"
                       />
                     </div>
                   </div>
@@ -323,7 +317,7 @@ export default function OurProcess() {
                             <span 
                               className="is-size-7 has-text-weight-semibold mr-3" 
                               style={{ 
-                                color: '#A855F7', 
+                                color: '#A38C6D', /* Gold/Bronze */
                                 fontFamily: 'Inter, sans-serif', 
                                 letterSpacing: '0.05em' 
                               }}
