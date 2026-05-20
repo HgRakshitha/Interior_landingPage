@@ -4,10 +4,10 @@ export default function OurProcess() {
   const [activeStep, setActiveStep] = useState(0);
 
   const phases = [
-    { name: 'Initiation', range: [0, 3], subtitle: 'Discovery & Scope Definition' },
-    { name: 'Conception', range: [4, 7], subtitle: 'Mood Boards & Spatial Layouts' },
-    { name: 'Refinement', range: [8, 11], subtitle: '3D Visuals & BOQ Finalization' },
-    { name: 'Execution', range: [12, 17], subtitle: 'Supervision & Project Delivery' }
+    { name: 'Initiation', range: [0, 3], subtitle: 'Discovery & Proposal' },
+    { name: 'Conception', range: [4, 7], subtitle: 'Design Conception' },
+    { name: 'Refinement', range: [8, 11], subtitle: 'Refinement & BOQ' },
+    { name: 'Execution', range: [12, 17], subtitle: 'Site Construction' }
   ];
 
   const stages = [
@@ -40,76 +40,218 @@ export default function OurProcess() {
 
   const activePhase = getPhaseForStep(activeStep);
 
-  const handlePhaseClick = (phaseIdx) => {
-    const firstStepOfPhase = phases[phaseIdx].range[0];
-    setActiveStep(firstStepOfPhase);
-    
-    // Smooth scroll to the phase header
-    const element = document.getElementById(`phase-header-${phaseIdx}`);
-    if (element) {
-      const yOffset = -120; // offset to account for navbar or top padding
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
+  const nextStep = () => {
+    if (activeStep < stages.length - 1) {
+      setActiveStep(prev => prev + 1);
     }
   };
 
+  const prevStep = () => {
+    if (activeStep > 0) {
+      setActiveStep(prev => prev - 1);
+    }
+  };
+
+  const jumpToPhase = (phaseIdx) => {
+    setActiveStep(phases[phaseIdx].range[0]);
+  };
+
   return (
-    <section className="section py-6 my-0" id="process" style={{ backgroundColor: '#000000', position: 'relative' }}>
-      {/* Global CSS for Animations and Custom Layouts */}
+    <section className="section py-6 my-0" id="process" style={{ backgroundColor: '#000000', position: 'relative', overflow: 'hidden' }}>
+      
+      {/* Dynamic Design Style definitions */}
       <style>{`
-        .phase-indicator {
+        .phase-node {
           cursor: pointer;
-          padding: 1.25rem 1.5rem;
-          border-left: 2px solid #27272A;
-          transition: all 0.4s ease;
-          opacity: 0.5;
-        }
-
-        .phase-indicator.active {
-          border-left-color: #A855F7;
-          opacity: 1;
-          background: linear-gradient(90deg, rgba(168, 85, 247, 0.05) 0%, rgba(0,0,0,0) 100%);
-        }
-
-        .step-card {
-          background-color: transparent;
-          border-radius: 12px;
-          padding: 1.25rem 1.5rem;
-          margin-bottom: 0.25rem;
-          transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-          border: 1px solid transparent;
           position: relative;
+          text-align: center;
+          z-index: 5;
+          transition: all 0.3s ease;
+          flex: 1;
         }
 
-        .step-card:hover, .step-card.active {
+        .phase-node-circle {
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background-color: #1F2937;
+          border: 2px solid #374151;
+          margin: 0 auto 0.75rem auto;
+          transition: all 0.4s ease;
+        }
+
+        .phase-node.active .phase-node-circle {
+          background-color: #A855F7;
+          border-color: #A855F7;
+          box-shadow: 0 0 15px #A855F7;
+          transform: scale(1.2);
+        }
+
+        .phase-node.active h4 {
+          color: #FFFFFF !important;
+        }
+
+        .phase-node.active p {
+          color: #A855F7 !important;
+        }
+
+        .carousel-track {
+          position: relative;
+          height: 380px;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 3rem 0;
+        }
+
+        .carousel-card {
+          position: absolute;
+          width: 580px;
+          height: 300px;
           background-color: #111827;
-          border-color: rgba(168, 85, 247, 0.15);
-          box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.5);
+          border: 1px solid rgba(255, 255, 255, 0.06);
+          border-radius: 24px;
+          padding: 3rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          transition: all 0.6s cubic-bezier(0.25, 1, 0.3, 1);
+          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
         }
 
-        .step-card.active {
-          border-color: rgba(168, 85, 247, 0.3);
+        .carousel-card-bg-num {
+          position: absolute;
+          right: 25px;
+          bottom: 10px;
+          font-size: 9rem;
+          font-weight: 900;
+          color: rgba(255, 255, 255, 0.025);
+          line-height: 1;
+          pointer-events: none;
+          font-family: 'Poppins', sans-serif;
+          user-select: none;
+          transition: color 0.4s ease;
         }
 
-        @keyframes pulse-glow {
-          0% {
-            box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.4);
+        .carousel-card.active .carousel-card-bg-num {
+          color: rgba(168, 85, 247, 0.05);
+        }
+
+        .carousel-arrow {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 54px;
+          height: 54px;
+          border-radius: 50%;
+          background-color: rgba(17, 24, 39, 0.8);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          color: #FFFFFF;
+          font-size: 1.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          z-index: 20;
+          box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .carousel-arrow:hover:not(.disabled) {
+          background-color: #A855F7;
+          border-color: #A855F7;
+          box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+          transform: translateY(-50%) scale(1.08);
+        }
+
+        .carousel-arrow.disabled {
+          opacity: 0.2;
+          cursor: not-allowed;
+        }
+
+        .carousel-arrow.prev {
+          left: 5%;
+        }
+
+        .carousel-arrow.next {
+          right: 5%;
+        }
+
+        .dots-row {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 0.65rem;
+          flex-wrap: wrap;
+          max-width: 800px;
+          margin: 0 auto;
+        }
+
+        .dot-button {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background-color: #111827;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          color: #9CA3AF;
+          font-size: 0.75rem;
+          font-weight: 500;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease;
+        }
+
+        .dot-button:hover {
+          border-color: rgba(168, 85, 247, 0.5);
+          color: #FFFFFF;
+        }
+
+        .dot-button.active {
+          background-color: #A855F7;
+          border-color: #A855F7;
+          color: #FFFFFF;
+          box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
+          transform: scale(1.1);
+        }
+
+        @media screen and (max-width: 1024px) {
+          .carousel-card {
+            width: 480px;
+            padding: 2.5rem;
           }
-          70% {
-            box-shadow: 0 0 0 10px rgba(168, 85, 247, 0);
-          }
-          100% {
-            box-shadow: 0 0 0 0 rgba(168, 85, 247, 0);
-          }
         }
 
-        .glow-dot {
-          animation: pulse-glow 2s infinite;
-        }
-
-        .desc-collapse {
-          overflow: hidden;
-          transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+        @media screen and (max-width: 768px) {
+          .carousel-card {
+            width: 88%;
+            height: 290px;
+            padding: 2rem;
+          }
+          .carousel-card:not(.active) {
+            opacity: 0 !important;
+            transform: scale(0.8) !important;
+            pointer-events: none;
+          }
+          .carousel-arrow {
+            top: auto;
+            bottom: -80px;
+            transform: none;
+          }
+          .carousel-arrow:hover {
+            transform: scale(1.05);
+          }
+          .carousel-arrow.prev {
+            left: 25%;
+          }
+          .carousel-arrow.next {
+            right: 25%;
+          }
+          .dots-row {
+            margin-top: 6.5rem;
+          }
         }
       `}</style>
 
@@ -122,7 +264,7 @@ export default function OurProcess() {
           </span>
         </div>
 
-        {/* Header Title */}
+        {/* Section Heading */}
         <div className="columns is-desktop mb-6">
           <div className="column is-6">
             <h2 className="title" style={{ 
@@ -133,233 +275,182 @@ export default function OurProcess() {
               color: '#FFFFFF',
               margin: 0
             }}>
-              A structured path <br />
-              <span className="serif-italic pr-2" style={{ color: '#A855F7', fontStyle: 'italic' }}>from vision</span> to reality.
+              A fluid showcase <br />
+              <span className="serif-italic pr-2" style={{ color: '#A855F7', fontStyle: 'italic' }}>of our design</span> roadmap.
             </h2>
           </div>
           <div className="column is-6 is-flex is-align-items-flex-end">
             <p className="is-size-6" style={{ color: '#D1D5DB', lineHeight: '1.7', fontFamily: 'Poppins, sans-serif', maxWidth: '450px' }}>
-              We divide the interior design journey into 18 steps across 4 major phases. Hover over a milestone or use the dynamic progress guide to explore our flow.
+              Explore the 18 milestones of our bespoke design workflow. Click the phases or step numbers to trace our interactive roadmap.
             </p>
           </div>
         </div>
 
-        {/* Main Content Area */}
-        <div className="columns is-desktop mt-6">
+        {/* Phase Timeline Header */}
+        <div style={{ position: 'relative', marginTop: '3.5rem', marginBottom: '3.5rem' }}>
+          {/* Horizontal connecting line */}
+          <div style={{ 
+            position: 'absolute', 
+            top: '7px', 
+            left: '12.5%', 
+            right: '12.5%', 
+            height: '2px', 
+            backgroundColor: '#1F2937', 
+            zIndex: 1 
+          }} />
+          <div style={{ 
+            position: 'absolute', 
+            top: '7px', 
+            left: '12.5%', 
+            width: `${(activePhase / 3) * 75}%`, 
+            height: '2px', 
+            backgroundColor: '#A855F7', 
+            transition: 'width 0.5s ease',
+            zIndex: 2 
+          }} />
+
+          {/* Phase Nodes */}
+          <div className="is-flex" style={{ width: '100%' }}>
+            {phases.map((phase, idx) => (
+              <div 
+                key={idx} 
+                className={`phase-node ${activePhase === idx ? 'active' : ''}`}
+                onClick={() => jumpToPhase(idx)}
+              >
+                <div className="phase-node-circle" />
+                <span className="is-size-7 has-text-weight-bold" style={{ color: '#6B7280', letterSpacing: '0.05em' }}>
+                  PHASE 0{idx + 1}
+                </span>
+                <h4 className="is-size-6 is-hidden-mobile" style={{ color: '#9CA3AF', fontFamily: 'Poppins, sans-serif', fontWeight: 500, marginTop: '0.25rem' }}>
+                  {phase.name}
+                </h4>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 3D Carousel Stage */}
+        <div style={{ position: 'relative', width: '100%' }}>
           
-          {/* Left Column: Sticky Phase Indicators (Hides on Mobile/Tablet) */}
-          <div className="column is-4-desktop is-hidden-touch">
-            <div style={{ position: 'sticky', top: '120px' }}>
-              <p className="is-size-7 has-text-weight-bold mb-4" style={{ color: '#9CA3AF', letterSpacing: '0.1em' }}>
-                PROJECT PHASES
-              </p>
-              
-              <div className="is-flex is-flex-direction-column" style={{ gap: '0.5rem' }}>
-                {phases.map((phase, idx) => (
-                  <div
-                    key={idx}
-                    className={`phase-indicator ${activePhase === idx ? 'active' : ''}`}
-                    onClick={() => handlePhaseClick(idx)}
-                  >
-                    <span className="is-size-7 has-text-weight-bold" style={{ color: activePhase === idx ? '#A855F7' : '#6B7280', display: 'block', marginBottom: '0.25rem' }}>
-                      PHASE 0{idx + 1}
-                    </span>
-                    <h3 className="is-size-5" style={{ color: activePhase === idx ? '#FFFFFF' : '#9CA3AF', fontFamily: 'Poppins, sans-serif', fontWeight: 500 }}>
-                      {phase.name}
+          {/* Left Arrow */}
+          <button 
+            className={`carousel-arrow prev ${activeStep === 0 ? 'disabled' : ''}`} 
+            onClick={prevStep}
+            aria-label="Previous step"
+          >
+            &#8249;
+          </button>
+
+          {/* Carousel Track */}
+          <div className="carousel-track">
+            {stages.map((stage, idx) => {
+              const diff = idx - activeStep;
+              let transformStyle = '';
+              let opacity = 0;
+              let zIndex = 1;
+              let pointerEvents = 'auto';
+
+              if (diff === 0) {
+                // Active Card
+                transformStyle = 'translateX(0) scale(1)';
+                opacity = 1;
+                zIndex = 10;
+              } else if (diff === -1) {
+                // Left Preview Card
+                transformStyle = 'translateX(-115%) scale(0.85)';
+                opacity = 0.25;
+                zIndex = 5;
+                pointerEvents = 'none';
+              } else if (diff === 1) {
+                // Right Preview Card
+                transformStyle = 'translateX(115%) scale(0.85)';
+                opacity = 0.25;
+                zIndex = 5;
+                pointerEvents = 'none';
+              } else if (diff < -1) {
+                // Hidden Left
+                transformStyle = 'translateX(-150%) scale(0.7)';
+                opacity = 0;
+                zIndex = 1;
+                pointerEvents = 'none';
+              } else if (diff > 1) {
+                // Hidden Right
+                transformStyle = 'translateX(150%) scale(0.7)';
+                opacity = 0;
+                zIndex = 1;
+                pointerEvents = 'none';
+              }
+
+              return (
+                <div
+                  key={idx}
+                  className={`carousel-card ${diff === 0 ? 'active' : ''}`}
+                  style={{
+                    transform: transformStyle,
+                    opacity: opacity,
+                    zIndex: zIndex,
+                    pointerEvents: pointerEvents
+                  }}
+                >
+                  <div className="carousel-card-bg-num">
+                    {stage.num}
+                  </div>
+
+                  <div>
+                    {/* Phase Badge */}
+                    <div className="mb-4">
+                      <span 
+                        className="is-uppercase is-size-7 has-text-weight-bold" 
+                        style={{ 
+                          color: '#A855F7', 
+                          backgroundColor: 'rgba(168, 85, 247, 0.1)', 
+                          padding: '0.35rem 0.75rem', 
+                          borderRadius: '4px',
+                          border: '1px solid rgba(168, 85, 247, 0.2)',
+                          letterSpacing: '0.1em'
+                        }}
+                      >
+                        PHASE 0{getPhaseForStep(idx) + 1}: {phases[getPhaseForStep(idx)].name.toUpperCase()}
+                      </span>
+                    </div>
+
+                    {/* Step Title */}
+                    <h3 className="title is-size-3 mb-3" style={{ fontFamily: 'Poppins, sans-serif', color: '#FFFFFF', fontWeight: 500 }}>
+                      {stage.title}
                     </h3>
-                    <p className="is-size-7 mt-1" style={{ color: '#6B7280' }}>
-                      {phase.subtitle}
+
+                    {/* Step Description */}
+                    <p className="is-size-6" style={{ color: '#D1D5DB', lineHeight: '1.6', fontFamily: 'Poppins, sans-serif' }}>
+                      {stage.desc}
                     </p>
                   </div>
-                ))}
-              </div>
-
-              {/* Progress Tracker Card */}
-              <div className="mt-6 p-5" style={{ backgroundColor: '#111827', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', maxWidth: '300px' }}>
-                <span className="is-size-7" style={{ color: '#9CA3AF' }}>MILESTONE TRACKER</span>
-                <h4 className="is-size-3 mt-1 mb-2" style={{ color: '#FFFFFF', fontWeight: 600 }}>
-                  {stages[activeStep].num} <span className="is-size-6" style={{ color: '#6B7280', fontWeight: 400 }}>/ 18</span>
-                </h4>
-                <div style={{ width: '100%', height: '4px', backgroundColor: '#374151', borderRadius: '2px', overflow: 'hidden' }}>
-                  <div style={{ width: `${((activeStep + 1) / 18) * 100}%`, height: '100%', backgroundColor: '#A855F7', transition: 'width 0.4s ease' }} />
                 </div>
-                <p className="is-size-7 mt-3" style={{ color: '#A855F7', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                  {stages[activeStep].title}
-                </p>
-              </div>
-            </div>
+              );
+            })}
           </div>
 
-          {/* Right Column: Stages Timeline */}
-          <div className="column is-8-desktop">
-            
-            {/* Horizontal Phase Tabs for Mobile/Tablet */}
-            <div className="is-hidden-desktop mb-6 pb-2" style={{ display: 'flex', overflowX: 'auto', gap: '1rem', borderBottom: '1px solid #27272A' }}>
-              {phases.map((phase, idx) => (
-                <button
-                  key={idx}
-                  className="button is-dark is-rounded is-small"
-                  style={{
-                    backgroundColor: activePhase === idx ? '#A855F7' : '#1F2937',
-                    color: '#FFFFFF',
-                    border: 'none',
-                    padding: '0.5rem 1rem',
-                    whiteSpace: 'nowrap'
-                  }}
-                  onClick={() => handlePhaseClick(idx)}
-                >
-                  Phase 0{idx + 1}: {phase.name}
-                </button>
-              ))}
-            </div>
+          {/* Right Arrow */}
+          <button 
+            className={`carousel-arrow next ${activeStep === stages.length - 1 ? 'disabled' : ''}`} 
+            onClick={nextStep}
+            aria-label="Next step"
+          >
+            &#8250;
+          </button>
+        </div>
 
-            {/* Stages Vertical List with Progress Line */}
-            <div style={{ position: 'relative', paddingLeft: '45px' }}>
-              
-              {/* Vertical Timeline Background Line */}
-              <div style={{ 
-                position: 'absolute', 
-                left: '16px', 
-                top: '24px', 
-                bottom: '24px', 
-                width: '2px', 
-                backgroundColor: '#1F2937', 
-                zIndex: 1 
-              }} />
-
-              {/* Vertical Timeline Active Progress Line */}
-              <div style={{ 
-                position: 'absolute', 
-                left: '16px', 
-                top: '24px', 
-                height: `${(activeStep / 17) * 98}%`, 
-                width: '2px', 
-                backgroundColor: '#A855F7', 
-                transition: 'height 0.4s cubic-bezier(0.25, 1, 0.5, 1)', 
-                zIndex: 2 
-              }} />
-
-              {/* Loop through phases and render steps */}
-              {phases.map((phase, phaseIdx) => (
-                <div key={phaseIdx} className="mb-6">
-                  
-                  {/* Phase Header */}
-                  <div 
-                    id={`phase-header-${phaseIdx}`} 
-                    className="pt-2 pb-4"
-                  >
-                    <span 
-                      className="is-uppercase is-size-7 has-text-weight-bold" 
-                      style={{ 
-                        color: '#A855F7', 
-                        backgroundColor: 'rgba(168, 85, 247, 0.1)', 
-                        padding: '0.25rem 0.75rem', 
-                        borderRadius: '4px',
-                        border: '1px solid rgba(168, 85, 247, 0.2)',
-                        letterSpacing: '0.1em'
-                      }}
-                    >
-                      PHASE 0{phaseIdx + 1} &mdash; {phase.name.toUpperCase()}
-                    </span>
-                  </div>
-
-                  {/* Render steps for this phase */}
-                  {stages.slice(phase.range[0], phase.range[1] + 1).map((stage, idx) => {
-                    // Calculate real global index
-                    const globalIdx = phase.range[0] + idx;
-                    const isActive = activeStep === globalIdx;
-
-                    return (
-                      <div
-                        key={globalIdx}
-                        className={`step-card ${isActive ? 'active' : ''}`}
-                        onMouseEnter={() => setActiveStep(globalIdx)}
-                        style={{ cursor: 'pointer' }}
-                      >
-                        {/* Timeline Marker Dot */}
-                        <div style={{ 
-                          position: 'absolute', 
-                          left: '-40px', 
-                          top: '24px', 
-                          width: '20px', 
-                          height: '20px', 
-                          borderRadius: '50%', 
-                          backgroundColor: isActive ? '#A855F7' : '#000000', 
-                          border: `2px solid ${isActive ? '#A855F7' : '#4B5563'}`, 
-                          zIndex: 3, 
-                          transition: 'all 0.3s ease',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center'
-                        }}
-                        className={isActive ? 'glow-dot' : ''}
-                        >
-                          <div style={{
-                            width: '6px',
-                            height: '6px',
-                            borderRadius: '50%',
-                            backgroundColor: '#FFFFFF',
-                            opacity: isActive ? 1 : 0,
-                            transition: 'opacity 0.3s ease'
-                          }} />
-                        </div>
-
-                        {/* Card Content */}
-                        <div>
-                          <div className="is-flex is-align-items-center mb-1">
-                            <span 
-                              className="is-size-7 has-text-weight-semibold mr-3" 
-                              style={{ 
-                                color: isActive ? '#A855F7' : '#6B7280', 
-                                fontFamily: 'Inter, sans-serif', 
-                                letterSpacing: '0.05em' 
-                              }}
-                            >
-                              ({stage.num})
-                            </span>
-                            <h3 
-                              className="is-size-4-desktop is-size-5-touch" 
-                              style={{ 
-                                fontFamily: 'Poppins, sans-serif', 
-                                color: isActive ? '#FFFFFF' : '#9CA3AF', 
-                                fontWeight: isActive ? 600 : 400,
-                                transition: 'color 0.3s ease'
-                              }}
-                            >
-                              {stage.title}
-                            </h3>
-                          </div>
-
-                          {/* Expandable Description Area */}
-                          <div 
-                            className="desc-collapse"
-                            style={{ 
-                              maxHeight: isActive ? '120px' : '0px', 
-                              opacity: isActive ? 1 : 0 
-                            }}
-                          >
-                            <p 
-                              className="is-size-6 mt-2 pr-4" 
-                              style={{ 
-                                color: '#D1D5DB', 
-                                lineHeight: '1.6', 
-                                fontFamily: 'Poppins, sans-serif'
-                              }}
-                            >
-                              {stage.desc}
-                            </p>
-                          </div>
-                        </div>
-
-                      </div>
-                    );
-                  })}
-                </div>
-              ))}
-
-            </div>
-          </div>
-
+        {/* Step dots navigation */}
+        <div className="dots-row">
+          {stages.map((stage, idx) => (
+            <button
+              key={idx}
+              className={`dot-button ${activeStep === idx ? 'active' : ''}`}
+              onClick={() => setActiveStep(idx)}
+              title={stage.title}
+            >
+              {stage.num}
+            </button>
+          ))}
         </div>
 
       </div>
